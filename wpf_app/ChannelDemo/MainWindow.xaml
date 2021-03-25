@@ -1,0 +1,94 @@
+﻿<Window x:Class="ChannelApiDemo.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ChannelApiDemo" 
+        xmlns:OpenFin="clr-namespace:Openfin.WPF;assembly=Openfin.WPF"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid Background="Black">
+        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="1"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="30"/>
+            </Grid.RowDefinitions>
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="5">
+                    <Label Foreground="white">Select a window to drive:</Label>
+                    <ComboBox Name="windowsSelector" IsEnabled="false" Width="200" Height="20"></ComboBox>
+            </StackPanel>
+
+            <StackPanel Grid.Row="1" Orientation="Horizontal">     
+                <Button x:Name="gridButton" 
+                        Margin="5"
+                        Width="100" 
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Right"
+                        Click="gridButton_Click"
+                        IsEnabled="False"
+                        >Grid Layout</Button>
+
+                <Button x:Name="tabbedButton" 
+                        Margin="5"
+                        Width="100" 
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Right"
+                        Click="tabbedButton_Click"
+                        IsEnabled="False"
+                        >Tabbed Layout</Button>
+
+                <Button x:Name="rowsButton" 
+                        Margin="5"
+                        Width="100" 
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Right"
+                        Click="rowsButton_Click"
+                        IsEnabled="False"
+                        >Rows Layout</Button>
+
+                <Button x:Name="columnsButton" 
+                        Margin="5"
+                        Width="100" 
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Right"
+                        Click="columnsButton_Click"
+                        IsEnabled="False"
+                        >Columns Layout</Button>
+            </StackPanel>
+        </Grid>
+        
+        <Border Grid.Column="1" BorderBrush="LightGray"  BorderThickness="1"/>
+        <Border Grid.Column="2" Margin="5px">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <StackPanel>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="5">
+                        <Label Foreground="white">Message to send to React App:</Label>
+                        <TextBox x:Name="messageInput" Width="200" Height="20" />
+                    </StackPanel>
+
+                    <Button x:Name="submitButton" 
+                            Margin="5"
+                            Width="100" 
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Right"
+                            Click="submitButton_Click"
+                            IsEnabled="False"
+                            >Send Message</Button>
+                </StackPanel>
+                <OpenFin:EmbeddedView Grid.Row="1" x:Name="OpenFinEmbeddedView" />
+            </Grid>
+           
+        </Border>        
+    </Grid>
+</Window>

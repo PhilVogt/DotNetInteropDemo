@@ -1,0 +1,42 @@
+{
+    "licenseKey": "6d8f832f-fe61-4a79-8881-735641223d2d",
+    "runtime": {
+        "version": "18.87.55.19"
+    },
+    "platform": {
+        "name": "Balyasny_dev",
+        "uuid": "Balyasny PoC",
+        "defaultWindowOptions": {
+            "contextMenu": true
+        }
+    },
+    "snapshot": {
+        "windows": [
+            {
+                "layout": {
+                    "content": [
+                        {
+                            "type": "row",
+                            "content": [
+                                {
+                                    "type": "component",
+                                    "componentName": "view",
+                                    "componentState": {
+                                        "url": "http://localhost:3000/"
+                                    }
+                                },
+                                {
+                                    "type": "component",
+                                    "componentName": "view",
+                                    "componentState": {
+                                        "url": "http://localhost:3000/"
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                }
+            }
+        ]
+    }
+}
