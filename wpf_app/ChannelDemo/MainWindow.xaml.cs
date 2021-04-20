@@ -31,6 +31,7 @@ namespace ChannelApiDemo
             this.runtime = Runtime.GetRuntimeInstance(runtimeOptions);
             runtime.Connect(async () =>
             {
+                
                 // Enable our buttons now that we're connected to the runtime
                 this.Dispatcher.Invoke(() =>
                 {
@@ -40,7 +41,6 @@ namespace ChannelApiDemo
                     this.columnsButton.IsEnabled = true;
                     this.rowsButton.IsEnabled = true;                    
                 });
-
                 runtime.System.getAllWindows((result) => {
                     this.Dispatcher.Invoke(() =>
                     {
@@ -69,8 +69,12 @@ namespace ChannelApiDemo
 
                 try
                 {
+                    var channel = runtime.InterApplicationBus.Channel.CreateProvider("MyAppActions");
+                    channel.RegisterTopic<string>("SayHello", (payload) => { return $"Hello {payload}!"; });
                     this.client = this.runtime.InterApplicationBus.Channel.CreateClient("pack-actions");
                     await client.ConnectAsync();
+                    var result = await client.DispatchAsync<string>("SayHello", "Your name goes here");
+                    Console.WriteLine($"Responded with \"{result}\".");
                     Console.WriteLine("Client channel connected");
                 }
                 catch (Exception e)
@@ -93,8 +97,7 @@ namespace ChannelApiDemo
 
         private void submitButton_Click(object sender, RoutedEventArgs e)
         {
-            InterApplicationBus.Publish(this.runtime, "messages", new { name = "Eze WPF Demo", text = this.messageInput.Text });
-
+            InterApplicationBus.Publish(this.runtime, "messages", new { name = "WPF Demo", text = this.messageInput.Text });
         }
 
         private async void SendLayoutCommand(string command)

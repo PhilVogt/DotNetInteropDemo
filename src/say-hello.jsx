@@ -10,19 +10,36 @@ export function SayHello() {
         evt.preventDefault();
 
         if (fin) {
-            let view = fin.View.getCurrentSync();
-            await fin.InterApplicationBus.publish('messages', { name: view.identity.name, text });
+            await fin.InterApplicationBus.publish('messages', { name: fin.me.identity.name, text });
             console.log("Message sent!");
+
+
         }
     };
 
+    let handleOpenAppAssetClick = (evt) => {
+        fin.System.launchExternalProcess({
+            alias: 'ChannelApiDemo',
+            listener: (result) => {
+                console.log('the exit code', result.exitCode);
+            }
+        }).then(processIdentity => {
+            console.log(processIdentity);
+        }).catch(error => {
+            console.log(error);
+        });
+    }
+
     return (
-        <form onSubmit={handleSubmit}>
-            <label>
-                Name:
+        <>
+            <form onSubmit={handleSubmit}>
+                <label>
+                    Name:
                 <input type="text" value={text} onChange={(evt) => setText(evt.currentTarget.value)} />
-            </label>
-            <input type="submit" value="Submit" />
-        </form>
+                </label>
+                <input type="submit" value="Send Message" />
+            </form>
+            <input type="button" onClick={handleOpenAppAssetClick} value="Open App Asset" />
+        </>
     );
 }

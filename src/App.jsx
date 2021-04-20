@@ -3,8 +3,9 @@ import { SayHello } from './say-hello';
 import { ShowWorld } from './show-world';
 
 function App() {
+
   return (
-    <div className="App">
+    <div className="app">
       <SayHello />
       <ShowWorld />
     </div>

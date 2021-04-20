@@ -3,11 +3,48 @@
     "runtime": {
         "version": "18.87.55.19"
     },
+    "appAssets": [
+        {
+            "src": "http://127.0.0.1:5500/assets/ChannelApiDemo.zip",
+            "alias": "ChannelApiDemo",
+            "target": "ChannelApiDemo.exe",
+            "version": "1.0.0"
+        }
+    ],
     "platform": {
-        "name": "Balyasny_dev",
-        "uuid": "Balyasny PoC",
+        "name": "Demo_dev",
+        "uuid": "Demo PoC",
         "defaultWindowOptions": {
-            "contextMenu": true
+            "permissions": {
+                "ExternalWindow": {
+                    "wrap": true
+                },
+                "System": {
+                    "downloadAsset": true,
+                    "launchExternalProcess": true,
+                    "getAllExternalWindows": true
+                }
+            }
+        },
+        "defaultViewOptions": {
+            "permissions": {
+                "System": {
+                    "launchExternalProcess": true,
+                    "downloadAsset": true,
+                    "getAllExternalWindows": true,
+                    "readRegistryValue": false,
+                    "terminateExternalProcess": true
+                }
+            }
+        },
+        "permissions": {
+            "System": {
+                "launchExternalProcess": true,
+                "downloadAsset": true,
+                "getAllExternalWindows": true,
+                "readRegistryValue": false,
+                "terminateExternalProcess": true
+            }
         }
     },
     "snapshot": {
@@ -18,13 +55,6 @@
                         {
                             "type": "row",
                             "content": [
-                                {
-                                    "type": "component",
-                                    "componentName": "view",
-                                    "componentState": {
-                                        "url": "http://localhost:3000/"
-                                    }
-                                },
                                 {
                                     "type": "component",
                                     "componentName": "view",

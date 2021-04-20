@@ -12,7 +12,9 @@
 /build
 
 # WPF
-/bin
+bin/
+obj/
+packages/
 
 # misc
 .DS_Store
