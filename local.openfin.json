@@ -9,6 +9,12 @@
             "alias": "ChannelApiDemo",
             "target": "ChannelApiDemo.exe",
             "version": "1.0.0"
+        },
+        {
+            "src": "http://127.0.0.1:5500/assets/TemplateExample.zip",
+            "alias": "TemplateExcelExample",
+            "target": "TemplateExample.xltx",
+            "version": "1.0.0"
         }
     ],
     "platform": {
@@ -68,5 +74,11 @@
                 }
             }
         ]
-    }
+    },
+    "services": [
+        {
+            "name": "excel",
+            "manifestUrl": "https://cdn.openfin.co/release/exceljs/4.0.1/provider/app.json"
+        }
+    ]
 }

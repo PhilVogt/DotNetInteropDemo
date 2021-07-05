@@ -1,6 +1,7 @@
 ﻿using Openfin.Desktop;
 using Openfin.Desktop.Messaging;
 using System;
+using System.Diagnostics;
 using System.Windows;
 
 namespace ChannelApiDemo
@@ -17,8 +18,14 @@ namespace ChannelApiDemo
         public MainWindow()
         {
             InitializeComponent();
-            InitialiseOpenFin();
-            InitialiseEmbeddedView();
+            //InitialiseOpenFin();
+            //InitialiseEmbeddedView();
+            DoStuff();
+        }
+
+        private void DoStuff()
+        {
+            var proxy = OpenFinProxy.Instance;           
         }
 
         private void InitialiseOpenFin()
@@ -69,6 +76,7 @@ namespace ChannelApiDemo
 
                 try
                 {
+                    Debugger.Launch();
                     var channel = runtime.InterApplicationBus.Channel.CreateProvider("MyAppActions");
                     channel.RegisterTopic<string>("SayHello", (payload) => { return $"Hello {payload}!"; });
                     this.client = this.runtime.InterApplicationBus.Channel.CreateClient("pack-actions");

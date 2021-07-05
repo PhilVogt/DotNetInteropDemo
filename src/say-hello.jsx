@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { LaunchExcel } from './launch-excel'
+import { ExcelWorkbookManager } from './excel-workbook-manager'
 
 // Needed to fix "no-undef" linter error
 /* global fin */
@@ -40,6 +42,8 @@ export function SayHello() {
                 <input type="submit" value="Send Message" />
             </form>
             <input type="button" onClick={handleOpenAppAssetClick} value="Open App Asset" />
+            <LaunchExcel />
+            <ExcelWorkbookManager />
         </>
     );
 }
